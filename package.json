@@ -10,13 +10,13 @@
     "shadcn",
     "theme"
   ],
-  "homepage": "https://github.com/xanots/onboarding#readme",
+  "homepage": "https://github.com/xano-sdk/onboarding#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/xanots/onboarding.git"
+    "url": "git+https://github.com/xano-sdk/onboarding.git"
   },
   "bugs": {
-    "url": "https://github.com/xanots/onboarding/issues"
+    "url": "https://github.com/xano-sdk/onboarding/issues"
   },
   "type": "module",
   "license": "MIT",
