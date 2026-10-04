@@ -1,0 +1,294 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * The configurator's OWN chrome. Deliberately plain neutral: this app is the
+ * frame around a preview of someone else's theme, and a frame with opinions
+ * competes with the thing it is framing.
+ *
+ * The preview pane does NOT use these. It gets the user's tokens injected on a
+ * scoped container — see `lib/preview-css.ts` — so `bg-primary` inside it
+ * resolves to their palette while the same class in the toolbar resolves to
+ * this one. That works because Tailwind resolves `bg-primary` to
+ * `var(--color-primary)` at build time, and custom properties inherit.
+ */
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root {
+  --radius: 0.625rem;
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: oklch(0.205 0 0);
+  --primary-foreground: oklch(0.985 0 0);
+  --secondary: oklch(0.97 0 0);
+  --secondary-foreground: oklch(0.205 0 0);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: oklch(0.205 0 0);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: oklch(0.922 0 0);
+  --primary-foreground: oklch(0.205 0 0);
+  --secondary: oklch(0.269 0 0);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.87 0 0);
+  --chart-2: oklch(0.556 0 0);
+  --chart-3: oklch(0.439 0 0);
+  --chart-4: oklch(0.371 0 0);
+  --chart-5: oklch(0.269 0 0);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: oklch(0.488 0.243 264.376);
+  --sidebar-primary-foreground: oklch(0.985 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/*
+ * A quieter scrollbar for the panes that scroll.
+ *
+ * The default macOS/Windows bar is drawn in the OS palette, so on a dark page
+ * it reads as a bright slab pinned to the edge of the panel — the single most
+ * visually distracting element in a UI whose whole job is to let you judge
+ * colour. This paints it from the theme instead.
+ *
+ * Both syntaxes are needed and neither is redundant: `scrollbar-*` is the
+ * standard property (Firefox, and Chromium 121+), `::-webkit-scrollbar` covers
+ * Safari and older Chromium, which support nothing else. A browser that honours
+ * both applies the standard one and ignores the pseudo-elements.
+ *
+ * `overlay-scrollbars`-style hiding is deliberately NOT used: a pane this long
+ * needs a visible position indicator, and a scrollbar that appears only while
+ * moving makes "how much more is there" unanswerable at rest.
+ */
+@layer utilities {
+  .scroll-slim {
+    scrollbar-width: thin;
+    /* thumb, then track. */
+    scrollbar-color: var(--border) transparent;
+  }
+
+  .scroll-slim::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  .scroll-slim::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .scroll-slim::-webkit-scrollbar-thumb {
+    background-color: var(--border);
+    border-radius: 999px;
+    /* Inset via a transparent border so the thumb reads as a slim pill with
+       breathing room, rather than a bar welded to the panel edge. */
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+
+  .scroll-slim:hover {
+    scrollbar-color: var(--muted-foreground) transparent;
+  }
+
+  .scroll-slim::-webkit-scrollbar-thumb:hover {
+    background-color: var(--muted-foreground);
+  }
+
+  /* No arrow buttons, and no filled square where the two bars meet. */
+  .scroll-slim::-webkit-scrollbar-button,
+  .scroll-slim::-webkit-scrollbar-corner {
+    display: none;
+  }
+}
+
+/*
+ * The brand surface: every step that is NOT the style step.
+ *
+ * The rule this app was built on is that the chrome stays plain, because it is
+ * a frame around a preview of someone else's theme and a frame with opinions
+ * competes with the thing being judged. That rule is about the STYLE step —
+ * it is the only screen with a preview on it. The other three have nothing to
+ * compete with, so they get to be Xano's, and the palette below is Xano's own — the brand blue
+ * `#0b5aff`, the two navies its product sits on, the blue-tinted paper its
+ * light sections run on, and the teal it reserves for live signal.
+ *
+ * No webfont. This page is served from a loopback port with no network
+ * guarantee — the framework logos are inlined for exactly that reason — so a
+ * hero that depended on a font request would break on the plane where the rest
+ * of the tool still works. The type voice is the terminal's instead: the mono
+ * stack the machine already has, used structurally rather than decoratively,
+ * which is the vernacular of a tool you reached by typing `npx`.
+ */
+.xo-brand {
+  --xo-brand: #0b5aff;
+  --xo-brand-soft: #6b99fa;
+  --xo-live: #00d6e9;
+  --xo-term: #030b1c;
+  --xo-term-raised: #000b22;
+  --xo-term-line: #16274a;
+  --xo-term-ink: #dbe4f6;
+  --xo-term-dim: #6b7791;
+  --xo-glow: 11 90 255;
+  --xo-glow-strength: 0.1;
+}
+
+.dark .xo-brand {
+  --xo-brand: #2b7fff;
+  --xo-brand-soft: #9db5f5;
+  --xo-glow-strength: 0.16;
+}
+
+/* xano.com puts a wide, very soft primary wash behind its hero. One light
+   source, off to the side of the terminal, rather than a gradient band across
+   the whole page — the terminal is what the page is lit by. */
+.xo-glow {
+  background:
+    radial-gradient(60% 55% at 78% 32%, rgb(var(--xo-glow) / var(--xo-glow-strength)), transparent 70%),
+    radial-gradient(40% 40% at 12% 8%, rgb(var(--xo-glow) / calc(var(--xo-glow-strength) * 0.55)), transparent 70%);
+}
+
+/* The terminal is dark in both themes, because a terminal is. In light mode it
+   is the one dark object on the page, which is what gives that half its weight. */
+.xo-term {
+  background: var(--xo-term);
+  color: var(--xo-term-ink);
+  border-color: var(--xo-term-line);
+}
+
+.xo-term-bar {
+  background: var(--xo-term-raised);
+  border-color: var(--xo-term-line);
+}
+
+.xo-caret {
+  display: inline-block;
+  width: 0.5em;
+  height: 1.05em;
+  vertical-align: text-bottom;
+  background: var(--xo-live);
+  animation: xo-caret 1.1s steps(1) infinite;
+}
+
+@keyframes xo-caret {
+  0%,
+  49% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+/*
+ * One orchestrated entrance, on load, and nothing after it. The page is a form
+ * someone is about to type into; anything that keeps moving while they do is
+ * noise. `--xo-rise-delay` staggers the sequence in the order you read it.
+ */
+.xo-rise {
+  animation: xo-rise 0.55s cubic-bezier(0.16, 1, 0.3, 1) both;
+  animation-delay: var(--xo-rise-delay, 0ms);
+}
+
+@keyframes xo-rise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .xo-rise,
+  .xo-caret {
+    animation: none;
+  }
+}

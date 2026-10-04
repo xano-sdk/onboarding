@@ -1,0 +1,77 @@
+{
+  "name": "@xano-sdk/onboard",
+  "version": "1.0.0",
+  "description": "Visual onboarding for Xano SDK — configure your theme and pick backend modules in the browser, then get the scaffolded project back in your terminal.",
+  "keywords": [
+    "xanosdk",
+    "xano",
+    "scaffold",
+    "onboarding",
+    "shadcn",
+    "theme"
+  ],
+  "homepage": "https://github.com/xanots/onboarding#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xanots/onboarding.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xanots/onboarding/issues"
+  },
+  "type": "module",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "bin": {
+    "onboard": "./dist/bin.js"
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "vite",
+    "dev:cli": "tsx src/bin.ts",
+    "build": "npm run build:cli && npm run build:app",
+    "build:app": "vite build",
+    "build:cli": "tsup",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "prepublishOnly": "npm run build",
+    "release": "npm publish --access public",
+    "release:beta": "npm version prerelease --preid=beta -m \"chore(release): %s\" && npm publish --tag beta --access public"
+  },
+  "dependencies": {
+    "@xano/sdk": ">=1.0.0 <2.0.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.0.0",
+    "@phosphor-icons/react": "^2.1.7",
+    "@tabler/icons-react": "^3.31.0",
+    "@tailwindcss/vite": "^4.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@types/node": "^20.0.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react": "^5.0.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "eslint": "^9.0.0",
+    "jsdom": "^26.1.0",
+    "lucide-react": "^0.475.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwind-merge": "^3.0.1",
+    "tailwindcss": "^4.0.0",
+    "tsup": "^8.0.0",
+    "tsx": "^4.22.4",
+    "typescript": "^5.5.0",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^8.0.0",
+    "vitest": "^3.2.6"
+  }
+}
