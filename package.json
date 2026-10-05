@@ -1,6 +1,6 @@
 {
   "name": "@xano-sdk/onboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Visual onboarding for Xano SDK — configure your theme and pick backend modules in the browser, then get the scaffolded project back in your terminal.",
   "keywords": [
     "xanosdk",
