@@ -41,6 +41,7 @@
     "typecheck": "tsc --noEmit",
     "lint": "eslint .",
     "test": "vitest run",
+    "test:e2e": "vitest run --config vitest.e2e.config.ts",
     "prepublishOnly": "npm run build",
     "release": "npm publish --access public",
     "release:beta": "npm version prerelease --preid=beta -m \"chore(release): %s\" && npm publish --tag beta --access public"

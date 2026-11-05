@@ -1,3 +1,5 @@
+`@xano/sdk`: dependency range `>=1.0.0 <2.0.0`, tested against `1.0.19` through the lockfile.
+
 Versioning starts at 1.0.0 under the `@xano-sdk/onboard` name. only increment 1.0.x for now regardless of change - we want to move quick. Don't bump unless told specifically
 
 Before release:
