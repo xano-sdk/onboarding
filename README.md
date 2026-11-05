@@ -131,10 +131,13 @@ request cannot escape it. The server is shut down before any scaffolding begins.
 
 ## Development
 
+`@xano/sdk` is a dependency, range `>=1.0.0 <2.0.0`. Built and tested against **1.0.19**.
+
 ```bash
 npm install
 npm run build          # client into dist/app, CLI into dist/
 npm test
+npm run test:e2e   # scaffold a real project, deploy it to a Xano Engine and sign up through it
 npm run dev            # UI with hot reload…
 npm run dev:cli -- --port 7777 --no-open   # …and the API it proxies to
 ```
